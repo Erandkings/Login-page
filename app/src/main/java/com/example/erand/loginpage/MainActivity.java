@@ -22,9 +22,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }, TIME);
     }
-
-    @Override
-    public void finish() {
-        super.finish();
-    }
 }

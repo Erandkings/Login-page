@@ -54,7 +54,6 @@ public class CreateAccount extends AppCompatActivity {
                 editor.commit();
 
                 Intent intent = new Intent(view.getContext(), DisplayProfile.class);
-                intent.putExtra("Key", "Data");
                 view.getContext().startActivity(intent);
 
                 LayoutInflater layoutInflater = getLayoutInflater();

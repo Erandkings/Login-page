@@ -1,6 +1,7 @@
 package com.example.erand.loginpage;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -13,12 +14,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
+    public static final String myPREF = "myPREF";
+    public static final String Email = "nameKey";
+    public static final String pass_word = "pass";
+    SharedPreferences sharedPreferences;
     public String userLogin, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedPreferences = getSharedPreferences(myPREF, MODE_PRIVATE);
+        final Boolean isLoggedIn = sharedPreferences.getBoolean("IsLoggedIn", false);
+
+        if (isLoggedIn) {
+            Intent intent = new Intent(this, DisplayProfile.class);
+            startActivity(intent);
+        }
+
+        final String Etoken = sharedPreferences.getString(Email, "DEFAULT_EMAIL");
+        final String Ptoken = sharedPreferences.getString(pass_word, "DEFAULT_EMAIL");
 
         TextView textView = (TextView) findViewById(R.id.clickhere);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -48,16 +64,15 @@ public class LoginActivity extends AppCompatActivity {
                 userLogin = editText.getText().toString();
                 pass = editText1.getText().toString();
 
-                Intent intent = new Intent(view.getContext(), DisplayProfile.class);
-                intent.putExtra("name", "value");
-                view.getContext().startActivity(intent);
+                if (userLogin.equals(Etoken) && (Etoken.isEmpty())) {
+                    Intent intent1 = new Intent(LoginActivity.this, DisplayProfile.class);
+                    startActivity(intent1);
+                } else {
+                    TextView textView1 = (TextView) findViewById(R.id.error_msg);
+                    textView1.setText("Wrong email or password");
+                }
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
         finish();
     }
 }

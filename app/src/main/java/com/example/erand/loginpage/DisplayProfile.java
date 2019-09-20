@@ -24,8 +24,6 @@ public class DisplayProfile extends AppCompatActivity {
         textView5.setText(CreateAccount.user);
         textView4.setText(CreateAccount.num);
 
-        Intent intent = getIntent();
-        intent.getSerializableExtra("Key");
     }
 
     @Override
