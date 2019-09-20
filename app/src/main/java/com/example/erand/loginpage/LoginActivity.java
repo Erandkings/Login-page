@@ -15,10 +15,11 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String myPREF = "myPREF";
-    public static final String Email = "nameKey";
+    public static final String email = "email";
+    public static final String username = "nameKey";
     public static final String pass_word = "pass";
     SharedPreferences sharedPreferences;
-    public String userLogin, pass;
+    public String emailAd, userLogin, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,9 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        final String Etoken = sharedPreferences.getString(Email, "DEFAULT_EMAIL");
-        final String Ptoken = sharedPreferences.getString(pass_word, "DEFAULT_EMAIL");
+        final String Email_token = sharedPreferences.getString(email, "DEFAULT_EMAIL");
+        final String Etoken = sharedPreferences.getString(username, "DEFAULT_USERNAME");
+        final String Ptoken = sharedPreferences.getString(pass_word, "DEFAULT_PASSWORD");
 
         TextView textView = (TextView) findViewById(R.id.clickhere);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText editText = (EditText) findViewById(R.id.user_login);
         final EditText editText1 = (EditText) findViewById(R.id.user_pass);
+        final EditText editText2 = (EditText) findViewById(R.id.user_login);
 
         Button button = (Button) findViewById(R.id.login_btn);
         button.setOnClickListener(new View.OnClickListener() {
@@ -63,8 +66,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 userLogin = editText.getText().toString();
                 pass = editText1.getText().toString();
+                emailAd = editText2.getText().toString();
 
-                if (userLogin.equals(Etoken) && (Etoken.isEmpty())) {
+                if (userLogin.equals(Etoken) || emailAd.equals(Email_token) && (pass.equals(Ptoken))) {
                     Intent intent1 = new Intent(LoginActivity.this, DisplayProfile.class);
                     startActivity(intent1);
                 } else {
@@ -73,6 +77,5 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        finish();
     }
 }

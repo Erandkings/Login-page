@@ -3,6 +3,9 @@ package com.example.erand.loginpage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class DisplayProfile extends AppCompatActivity {
@@ -21,14 +24,22 @@ public class DisplayProfile extends AppCompatActivity {
         textView1.setText(CreateAccount.first);
         textView2.setText(CreateAccount.second);
         textView3.setText(CreateAccount.emel);
-        textView5.setText(CreateAccount.user);
+        textView5.setText(CreateAccount.users);
         textView4.setText(CreateAccount.num);
 
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.signout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(DisplayProfile.this, LoginActivity.class);
+        startActivity(intent);
+        return true;
     }
 }
