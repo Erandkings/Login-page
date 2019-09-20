@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">LoginPage</string>
+    <string name="create_account">Create Account</string>
+    <string name="hng">HNG Internship</string>
+    <string name="login">Login</string>
+    <string name="task">Task1</string>
+    <string name="first">First Name</string>
+    <string name="second">Second Name</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="user_email">Username/Email</string>
+    <string name="user_pass">Password</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="already_have">Already Have an account</string>
+    <string name="login_here">login here</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="click_here">Click Here</string>
+    <string name="profile">Profile</string>
+</resources>
